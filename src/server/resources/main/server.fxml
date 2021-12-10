@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="windowSP" dividerPositions="0.38" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.InboxController">
-    <items>
-        <BorderPane fx:id="pnlEmailList" prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="262.0" BorderPane.alignment="CENTER">
+<BorderPane fx:id="windowBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ServerController">
+    <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="722.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="imgIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/logo.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="accountLbl" prefHeight="54.0" prefWidth="215.0" text="Label">
+                        <Label fx:id="accountLbl" prefHeight="54.0" prefWidth="215.0" text="Server">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
                         </Label>
                      </children>
                      <padding>
@@ -28,10 +30,10 @@
                      </padding>
                   </HBox>
                </top>
-               <center>
-                  <ListView fx:id="emailsList" prefHeight="449.0" prefWidth="262.0" BorderPane.alignment="CENTER" />
-               </center>
-               <bottom>
+    <center>
+        <TextArea fx:id="logTxt" prefHeight="449.0" prefWidth="262.0" BorderPane.alignment="CENTER" />
+    </center>
+    <bottom>
                   <GridPane alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,10 +44,8 @@
                     </rowConstraints>
                      <children>
                         <Button fx:id="exitBtn" mnemonicParsing="false" onMouseClicked="#onExitBtnClick" text="Exit" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="writeBtn" mnemonicParsing="false" onMouseClicked="#onWriteBtnClick" text="New message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="exportBtn" mnemonicParsing="false" onMouseClicked="#onExportBtnClick" text="Export log" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </bottom>
-            </BorderPane>
-    </items>
-</SplitPane>
+</BorderPane>

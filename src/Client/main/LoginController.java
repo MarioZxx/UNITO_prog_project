@@ -1,4 +1,4 @@
-package main;
+package src.Client.main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,24 +17,35 @@ public class LoginController {
   @FXML
   private PasswordField passwordText;
   @FXML
-  private Button successButton, logInButton;
+  private Button alertBtn, logInBtn;
 
   @FXML
-  protected void onLogInButtonClick()throws IOException {
+  protected void onLogInButtonClick()throws IOException { //socket
     //Chek if account exists; server's work
 
-    Stage mailStage = new Stage();
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/main/inbox.fxml"));
-    mailStage.setTitle("Mail Box");
-    mailStage.setScene(new Scene(fxmlLoader.load()));
-    mailStage.show();
+    if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
+      Stage failureStage = new Stage();
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/main/failure.fxml"));
+      failureStage.setScene(new Scene(fxmlLoader.load()));
+      failureStage.show();
+    }else{
+      Stage mailStage = new Stage();
+      FXMLLoader inboxLoader = new FXMLLoader(getClass().getResource("../resources/main/inbox.fxml"));
+      mailStage.setTitle("Mail Box");
+      mailStage.setScene(new Scene(inboxLoader.load()));
+      InboxController mailController = inboxLoader.getController();
+      mailController.setUserMail(accountText.getText());
+      mailStage.show();
 
-    Stage logInStage = (Stage)logInButton.getScene().getWindow();
-    logInStage.close();
+      Stage logInStage = (Stage) logInBtn.getScene().getWindow();
+      logInStage.close();
+    }
+
+
   }
 
   @FXML
-  protected void onRegisterLabelClick() throws IOException {
+  protected void onRegisterLabelClick() throws IOException {  //socket
     //Si dovrà passare i text al server per fare sign in;
     //System.out.println(accountText.getText() + passwordText.getText());
 
@@ -45,9 +56,10 @@ public class LoginController {
   }
 
   @FXML
-  protected void onSuccessButtonClick() throws IOException {
-    Stage logInStage = (Stage)successButton.getScene().getWindow();
-    logInStage.close();
+  protected void onAlertButtonClick() throws IOException {
+    Stage alertStage = (Stage) alertBtn.getScene().getWindow();
+    alertStage.close();
   }
+
 
 }

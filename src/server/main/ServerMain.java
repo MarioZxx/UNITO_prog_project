@@ -1,4 +1,4 @@
-package src.Client.main;
+package src.server.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientMain extends Application {
+public class ServerMain extends Application {
   @Override
   public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/main/login.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/main/server.fxml"));
     Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-    stage.setTitle("Login");
+    stage.setTitle("server");
     stage.setScene(scene);
     stage.show();
   }

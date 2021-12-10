@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<email>
+    <id>10086</id>
+    <sender>mittente@unito.it</sender>
+    <receivers>
+        <receiver>destinatario1@unito.it</receiver>
+        <receiver>destinatario2@unito.it</receiver>
+        <receiver>studente</receiver>
+    </receivers>
+    <subject>Non dimenticare...</subject>
+    <emailDate>15/12/2021</emailDate>
+    <text>L'appuntamento è per domani alle 9, ci vediamo al solito posto</text>
+</email>

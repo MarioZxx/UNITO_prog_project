@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Client/main/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client/main/InboxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client/main/WriteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/main/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/progetto_prog3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/ClientMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/MailController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/model/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/model/Email.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/client.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/account_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/inbox.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/logIn.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/mailList.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/failure.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/client.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/account_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/mailList.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="224TYVDvRVCDIdGdid2cOAcPBmN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PATH_TO_FX$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="" />
+      <created>1639095906934</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639095906934</updated>
+      <workItem from="1639095912616" duration="50000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

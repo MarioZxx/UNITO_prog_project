@@ -7,8 +7,8 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="188.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.LoginController">
    <children>
-      <Label text="Registration successful!" textAlignment="CENTER" />
-      <Button fx:id="successButton" onAction="#onSuccessButtonClick" mnemonicParsing="false" text="Close">
+      <Label text="Wrong email syntax!" textAlignment="CENTER" />
+      <Button fx:id="alertBtn" onAction="#onAlertButtonClick" mnemonicParsing="false" text="Close">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>

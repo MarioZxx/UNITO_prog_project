@@ -1,7 +1,8 @@
-package model;
+package src.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class Email {
 
@@ -10,7 +11,7 @@ public class Email {
   private List<String> receivers;
   private String subject;
   private String text;
-  private int emailDate;
+  private Date emailDate;
 
   private Email() {}
 
@@ -25,10 +26,10 @@ public class Email {
    * @param emailDate       date the email was sent
    */
 
-  public Email(String id, String sender, List<String> receivers, String subject, String text, int emailDate) {
+  public Email(String id, String sender, List<String> receivers, String subject, String text, Date emailDate) {
     this.id = id;
     this.sender = sender;
-    this.receivers = new ArrayList<>(receivers);;
+    this.receivers = new ArrayList<>(receivers);
     this.subject = subject;
     this.text = text;
     this.emailDate = emailDate;
@@ -54,7 +55,7 @@ public class Email {
     return text;
   }
 
-  public int getEmailDate() {
+  public Date getEmailDate() {
     return emailDate;
   }
 
