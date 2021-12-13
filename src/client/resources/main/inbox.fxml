@@ -6,13 +6,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="windowSP" dividerPositions="0.38" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.InboxController">
+<SplitPane fx:id="windowSP" dividerPositions="0.38" prefHeight="543.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.client.main.InboxController">
     <items>
-        <BorderPane fx:id="pnlEmailList" prefHeight="200.0" prefWidth="200.0">
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="262.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ImageView fx:id="imgIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="accountImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/logo.png" />
                            </image>
@@ -29,7 +29,7 @@
                   </HBox>
                </top>
                <center>
-                  <ListView fx:id="emailsList" prefHeight="449.0" prefWidth="262.0" BorderPane.alignment="CENTER" />
+                  <ListView fx:id="emailListView" prefHeight="449.0" prefWidth="262.0" BorderPane.alignment="CENTER" />
                </center>
                <bottom>
                   <GridPane alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">

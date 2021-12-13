@@ -4,12 +4,18 @@ package src.server.main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import src.model.*;
 
 public class ServerController {
   @FXML
@@ -17,69 +23,66 @@ public class ServerController {
   @FXML
   private Button exportBtn;
   @FXML
+  private Button connectBtn;
+  @FXML
+  private Button disconnectBtn;
+  @FXML
   private TextArea logTxt;
 
-  Date date;
+  private ServerSocket serverSocket;
 
   @FXML
-  public void initialize() {
-    logTxt.appendText(  new Date() + "Inizializzato il server.");
-    try {
-      int i = 1;
-      ServerSocket s = new ServerSocket(8189);
+  public void initialize(){
+    connectBtn.setVisible(true);
+    disconnectBtn.setVisible(false);
+  }
 
-      while (true) {
-        Socket incoming = s.accept(); // si mette in attesa di richiesta di connessione e la apre
-        System.out.println("Spawning " + i);
-        Runnable r = new ServerThread(incoming);
-        new Thread(r).start();
-        i++;
-      }
+  @FXML
+  protected void onConnectBtnClick() {
+    System.out.println("Connecting...");
+    logTxt.appendText(new Log(new Date(), "SERVER", "connection started", null, null).toString());
+    try {
+      serverSocket = new ServerSocket(8189);
+      Runnable r = new ServerSupportThread(serverSocket, logTxt);
+      new Thread(r).start();
     }
     catch (IOException e) {e.printStackTrace();}
+    disconnectBtn.setVisible(true);
+    connectBtn.setVisible(false);
+  }
+
+  @FXML
+  protected void onDisconnectBtnClick() { //come faccio a far chiudere il socket del thread?
+    try{
+      serverSocket.close();
+    }catch (IOException e){
+      e.printStackTrace();
+    }
+    connectBtn.setVisible(true);
+    disconnectBtn.setVisible(false);
   }
 
   public void onExitBtnClick() {
+    if(serverSocket != null) {
+      try {
+        serverSocket.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
     Stage serverStage = (Stage)exitBtn.getScene().getWindow();
     serverStage.close();
   }
 
-  public void onExportBtnClick() {
+  public void onExportBtnClick() throws IOException {
+    DateFormat df = new SimpleDateFormat("dd_MM_yyyy");
+    FileWriter fw = new FileWriter(df.format(new Date()) + ".log",true);
+    fw.write(logTxt.getText());
+    if (fw!=null) fw.close();
   }
+
+
 }
 
-class ServerThread implements Runnable {
 
-  private Socket incoming;
-
-  /**
-   Constructs a handler.
-   @param in the incoming socket
-   */
-  public ServerThread(Socket in) {
-    incoming = in;
-  }
-
-  public void run() {
-    try {
-      try {
-        ObjectInputStream inStream = new ObjectInputStream(incoming.getInputStream());
-        OutputStream outStream = incoming.getOutputStream();
-
-        PrintWriter out = new PrintWriter(outStream, true /* autoFlush */);
-
-        try {
-          Date date = ((Date)inStream.readObject());
-          System.out.println("Echo: " + date.toString());
-          out.println("Echo: " + date.toString());
-        } catch (ClassNotFoundException e) {System.out.println(e.getMessage());}
-
-      }
-      finally {
-        incoming.close();
-      }
-    }
-    catch (IOException e) {e.printStackTrace();}
-  }
-
-}

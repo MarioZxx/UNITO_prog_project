@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="windowBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ServerController">
-    <top>
-                  <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="722.0" BorderPane.alignment="CENTER">
+<VBox prefHeight="378.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.server.main.ServerController">
+   <children>
+       <BorderPane VBox.vgrow="ALWAYS">
+           <top>
+                     <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="722.0" BorderPane.alignment="CENTER">
+                        <children>
+                           <ImageView fx:id="imgIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/logo.png" />
+                              </image>
+                           </ImageView>
+                           <Label fx:id="accountLbl" prefHeight="54.0" prefWidth="215.0" text="Server">
+                              <HBox.margin>
+                                 <Insets left="20.0" />
+                              </HBox.margin>
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+                           </Label>
+                        </children>
+                        <padding>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </padding>
+                     </HBox>
+                  </top>
+           <center>
+                <TextArea fx:id="logTxt" editable="false" prefHeight="415.0" prefWidth="722.0" BorderPane.alignment="CENTER" />
+           </center>
+           <bottom>
+               <GridPane alignment="CENTER" prefHeight="37.0" prefWidth="568.0" BorderPane.alignment="CENTER">
+                       <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                        <children>
+                           <Button fx:id="exitBtn" mnemonicParsing="false" onMouseClicked="#onExitBtnClick" text="Exit" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <StackPane prefHeight="34.0" prefWidth="189.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fx:id="imgIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/logo.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="accountLbl" prefHeight="54.0" prefWidth="215.0" text="Server">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-                        </Label>
+                        <Button fx:id="connectBtn" mnemonicParsing="false" onMouseClicked="#onConnectBtnClick" text="Connect" />
+                        <Button fx:id="disconnectBtn" mnemonicParsing="false" onMouseClicked="#onDisconnectBtnClick" text="Disconnect" />
                      </children>
-                     <padding>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </padding>
-                  </HBox>
-               </top>
-    <center>
-        <TextArea fx:id="logTxt" prefHeight="449.0" prefWidth="262.0" BorderPane.alignment="CENTER" />
-    </center>
-    <bottom>
-                  <GridPane alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="exitBtn" mnemonicParsing="false" onMouseClicked="#onExitBtnClick" text="Exit" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="exportBtn" mnemonicParsing="false" onMouseClicked="#onExportBtnClick" text="Export log" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                     </children>
-                  </GridPane>
-               </bottom>
-</BorderPane>
+                  </StackPane>
+                           <Button fx:id="exportBtn" mnemonicParsing="false" onMouseClicked="#onExportBtnClick" text="Export log" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        </children>
+                     </GridPane>
+           </bottom>
+       </BorderPane>
+   </children>
+</VBox>

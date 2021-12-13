@@ -1,4 +1,4 @@
-package src.Client.main;
+package src.client.main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
@@ -6,12 +6,20 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import src.model.Email;
-import src.model.Account;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import src.model.*;
 
 import javafx.scene.control.Button;
 
+import javax.xml.parsers.*;
+import java.io.IOException;
+import java.net.Socket;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class WriteController {
@@ -30,6 +38,7 @@ public class WriteController {
   private SplitPane sp;
 
   private Account account;
+  private Socket socket;
 
   public void setParent(SplitPane sp) {
     this.sp = sp;
@@ -39,8 +48,25 @@ public class WriteController {
     this.account = account;
   }
 
-  public void onSendBtnClick(MouseEvent mouseEvent) { //socket
+  public void setSocket(Socket socket) {
+    this.socket = socket;
+  }
 
+  public void onSendBtnClick(MouseEvent mouseEvent) throws IOException {
+    List<String> receivers = new ArrayList<>(
+      Arrays.asList(sendToTxt.getText().replaceAll("[ ]*","").split(";"))
+    );
+    NoReadObjectInputStream inStream = new NoReadObjectInputStream(socket.getInputStream());
+    NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
+    Email sendingEmail = new Email(Long.toString(new Date().getTime()),
+            account.getEmailAddress(),
+            receivers,
+            sendSubjectTxt.getText(),
+            sendTextTxt.getText(),
+            new Date());
+      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email",
+              "send", sendingEmail));
+      outStream.flush();
   }
 
   public void onNoSendBtnClick(MouseEvent mouseEvent) {
@@ -71,8 +97,10 @@ public class WriteController {
   }
 
   public void forwardEmail(Email email){
-    sendSubjectTxt.setText("Re: " + email.getSubject());
+    sendSubjectTxt.setText("Fo: " + email.getSubject());
     sendTextTxt.setText("\n\r\n\r\n\r---------- Forwarded message ---------\n\r" + email.getText());
+    sendSubjectTxt.setEditable(false);
   }
+
 
 }

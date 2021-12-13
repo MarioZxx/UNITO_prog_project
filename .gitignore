@@ -1,0 +1,9 @@
+#ignore all .pdf files
+*.pdf
+
+#ignore mails.xml files
+/src/server/resources/account/*
+
+out/*
+
+*.log

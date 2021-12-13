@@ -1,4 +1,4 @@
-package src.Client.main;
+package src.client.main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import src.model.Email;
 import src.model.Account;
+import src.model.Log;
+import src.model.NoWriteObjectOutputStream;
 
 import java.io.IOException;
+import java.net.Socket;
+import java.util.Date;
 
 public class EmailController {
   @FXML
@@ -25,23 +29,28 @@ public class EmailController {
 
   private Account account;
   private Email email;
+  private Socket socket;
 
   public void setParent(SplitPane sp) {
     this.windowSP = sp;
+  }
+
+  public void setAccount(Account account){
+    this.account = account;
+  }
+
+  public void setSocket(Socket socket) {
+    this.socket = socket;
   }
 
   public void setEmail(Email email) {
     this.email = email;
     if(email != null) {
       fromLbl.setText(email.getSender());
-      toLbl.setText(String.join(", ", email.getReceivers()));
+      toLbl.setText(String.join("; ", email.getReceivers()));
       subjectLbl.setText(email.getSubject());
       emailContentTxt.setText(email.getText());
     }
-  }
-
-  public void setAccount(Account account){
-    this.account = account;
   }
 
   @FXML
@@ -75,17 +84,21 @@ public class EmailController {
   }
 
   private WriteController writeSupport() throws IOException{
+
     FXMLLoader replyLoader = new FXMLLoader(getClass().getResource("../resources/main/write.fxml"));
+    windowSP.getItems().set(1, replyLoader.load());
 
-      windowSP.getItems().set(1, replyLoader.load());
-
-      WriteController writeController = replyLoader.getController();
-      writeController.setParent(windowSP);
-      writeController.setAccount(account);
-      return writeController;
+    WriteController writeController = replyLoader.getController();
+    writeController.setParent(windowSP);
+    writeController.setAccount(account);
+    writeController.setSocket(socket);
+    return writeController;
   }
 
-  public void onDeleteBtnClick(MouseEvent mouseEvent) { //socket
+  public void onDeleteBtnClick(MouseEvent mouseEvent) throws IOException { //socket
+    NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
+    outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Delete email id: " + email.getId(),
+            "delete", email));
     account.deleteEmail(email);
     windowSP.getItems().remove(1);
   }

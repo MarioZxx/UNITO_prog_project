@@ -1,10 +1,11 @@
 package src.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-public class Email {
+public class Email implements Serializable {
 
   private String id;
   private String sender;
@@ -12,9 +13,6 @@ public class Email {
   private String subject;
   private String text;
   private Date emailDate;
-
-  private Email() {}
-
 
   /**
    * Constructor of the class.
@@ -64,6 +62,6 @@ public class Email {
    */
   @Override
   public String toString() {
-    return String.join(" - ", List.of(this.sender,this.subject));
+    return String.join(" - ", List.of(this.sender, this.subject));
   }
 }

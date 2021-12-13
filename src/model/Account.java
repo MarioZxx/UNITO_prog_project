@@ -2,9 +2,7 @@ package src.model;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,7 +20,7 @@ import java.util.Date;
 public class Account{
 
   private final ListProperty<Email> inbox;
-  private final ObservableList<Email> inboxContent;
+  private final ObservableList<Email> inboxContent;//ObservableList<Email> inboxContent = FXCollections.observableArrayList(arrayList); per convertire ArrayList in ObservableList
   private final String emailAddress;
 
   /**
@@ -66,21 +64,21 @@ public class Account{
   }
 
   /**
-   *genera email random da aggiungere alla lista di email, ese verranno mostrate nella ui
+   *Receive a List of File.xml, and save them in the inbox
    */
-  public void getEmails() {
+  public void saveNewEmails(List<File> newEmails) {
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(new File("src/client/resources/mails/abcdef.xml"));
 
-      for (int i = 0; i < 1; i++) { //da cambiare in while, finchè nel socket c'è ancora file, itera
+      for (File file : newEmails) {
+        Document doc = db.parse(file);
 
         // get text
         String id = doc.getElementsByTagName("id").item(0).getTextContent();
         String sender = doc.getElementsByTagName("sender").item(0).getTextContent();
         List<String> receivers = new ArrayList<>();
-        for(int j = 0; j < doc.getElementsByTagName("receiver").getLength(); j++){
+        for (int j = 0; j < doc.getElementsByTagName("receiver").getLength(); j++) {
           receivers.add(doc.getElementsByTagName("receiver").item(j).getTextContent());
         }
         String subject = doc.getElementsByTagName("subject").item(0).getTextContent();
@@ -90,18 +88,18 @@ public class Account{
         String emailDateStr = doc.getElementsByTagName("emailDate").item(0).getTextContent();
         Date emailDate = df.parse(emailDateStr);
 
-//        System.out.println("Current Element :" + doc.getNodeName());
-//        System.out.println("Id : " + id);
-//        System.out.println("Sender : " + sender);
-//        System.out.println("Receivers : " + receivers);
-//        System.out.println("Subject : " + subject);
-//        System.out.println("EmailDate : " + emailDate);
-//        System.out.println("Text : " + text);
+//      System.out.println("Current Element :" + doc.getNodeName());
+//      System.out.println("Id : " + id);
+//      System.out.println("Sender : " + sender);
+//      System.out.println("Receivers : " + receivers);
+//      System.out.println("Subject : " + subject);
+//      System.out.println("EmailDate : " + emailDate);
+//      System.out.println("Text : " + text);
 
         Email email = new Email(id, sender, receivers, subject, text, emailDate);
         inboxContent.add(email);
-      }
 
+      }
 
     }catch (ParserConfigurationException | SAXException | IOException | ParseException e) {
       e.printStackTrace();

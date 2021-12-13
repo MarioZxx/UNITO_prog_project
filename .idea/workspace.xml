@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Client/main/EmailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client/main/InboxController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client/main/WriteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/main/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/progetto_prog3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/ClientMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/main/MailController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/model/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/model/Email.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/client.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/account_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/icon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/inbox.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/logIn.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/mailList.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/progetto_prog3/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/failure.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/MailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/client.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/account_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/icon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/mailList.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/resources/main/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/NoReadObjectInputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/NoWriteObjectOutputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/progetto_prog3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/progetto_prog3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/EmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/mails/abcdef.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/email.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/email.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/failure.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/inbox.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/alert.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/write.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/write.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/resources/main/server.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/resources/main/server.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,14 +54,93 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PATH_TO_FX$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/server/resource/account/a@a_a" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resource\account\a@a_a" />
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\client\main" />
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resource\account\studente@a.a" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resources\account\a@a_a" />
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\client\resources\main" />
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\resources\mails\main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src.server.resource.account" />
+      <recent name="src.server.resource" />
+      <recent name="src.temp" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClientMain">
+    <configuration name="ClientMain" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.client.main.ClientMain" />
+      <module name="progetto_prog3" />
+      <option name="VM_PARAMETERS" value="$FOR_JAVAFX$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.client.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FolderTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.server.main.FolderTest" />
+      <module name="progetto_prog3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.server.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.server.main.ServerMain" />
+      <module name="progetto_prog3" />
+      <option name="VM_PARAMETERS" value="$FOR_JAVAFX$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.server.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.ServerMain" />
+      <item itemvalue="Application.FolderTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.FolderTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,11 +150,52 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639095906934</updated>
-      <workItem from="1639095912616" duration="50000" />
+      <workItem from="1639095912616" duration="589000" />
+      <workItem from="1639096534519" duration="9409000" />
+      <workItem from="1639106210236" duration="272000" />
+      <workItem from="1639106515353" duration="5053000" />
+      <workItem from="1639174068533" duration="12038000" />
+      <workItem from="1639240815907" duration="30730000" />
+      <workItem from="1639319746669" duration="24366000" />
+      <workItem from="1639354945604" duration="5828000" />
+      <workItem from="1639434707387" duration="3645000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.SocketException" package="java.net" />
+          <option name="timeStamp" value="11" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.reflect.InvocationTargetException" package="java.lang.reflect" />
+          <option name="timeStamp" value="12" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="13" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
