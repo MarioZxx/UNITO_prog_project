@@ -8,11 +8,11 @@ import java.util.Date;
 public class Email implements Serializable {
 
   private String id;
+  private Date emailDate;
   private String sender;
   private List<String> receivers;
   private String subject;
   private String text;
-  private Date emailDate;
 
   /**
    * Constructor of the class.
@@ -24,17 +24,21 @@ public class Email implements Serializable {
    * @param emailDate       date the email was sent
    */
 
-  public Email(String id, String sender, List<String> receivers, String subject, String text, Date emailDate) {
+  public Email(String id, Date emailDate, String sender, List<String> receivers, String subject, String text) {
     this.id = id;
+    this.emailDate = emailDate;
     this.sender = sender;
     this.receivers = new ArrayList<>(receivers);
     this.subject = subject;
     this.text = text;
-    this.emailDate = emailDate;
   }
 
   public String getId() {
     return id;
+  }
+
+  public Date getEmailDate() {
+    return emailDate;
   }
 
   public String getSender() {
@@ -51,10 +55,6 @@ public class Email implements Serializable {
 
   public String getText() {
     return text;
-  }
-
-  public Date getEmailDate() {
-    return emailDate;
   }
 
   /**

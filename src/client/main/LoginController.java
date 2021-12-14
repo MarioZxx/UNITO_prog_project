@@ -32,16 +32,16 @@ public class LoginController {
 
   @FXML
   protected void onLogInButtonClick() throws IOException {
-    if(socket == null || socket.isClosed()) {
-      socket = new Socket("127.0.0.1", 8189);
-      inStream = new ObjectInputStream(socket.getInputStream());
-      outStream = new ObjectOutputStream(socket.getOutputStream());
-      outStream.flush();
-    }
-
     if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
       loadAlertStage("Email syntax wrong!");
     }else{
+
+        if(socket == null || socket.isClosed()) {
+          socket = new Socket("127.0.0.1", 8189);
+          inStream = new ObjectInputStream(socket.getInputStream());
+          outStream = new ObjectOutputStream(socket.getOutputStream());
+          outStream.flush();
+        }
         try {
           outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to login", "login", null));
           outStream.flush();
@@ -62,8 +62,10 @@ public class LoginController {
             Stage logInStage = (Stage) logInBtn.getScene().getWindow();
             logInStage.close();
           }else{
-            loadAlertStage("Account not exist");
+            loadAlertStage("Account or password wrong");
+            socket.close();
           }
+
         }catch (IOException e){e.printStackTrace();}
     }
   }
@@ -80,13 +82,15 @@ public class LoginController {
         outStream = new ObjectOutputStream(socket.getOutputStream());
         outStream.flush();
       }
-      outStream.writeObject(new Log(new Date(), accountText.getText(), "Registration success",
+      outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to registration",
       "regis", null));
       outStream.flush();
       if (inStream.readBoolean())
         loadAlertStage("Registration successful!");
-      else
+      else {
         loadAlertStage("Account already exists!");
+        socket.close();
+      }
     }
   }
 

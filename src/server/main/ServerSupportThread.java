@@ -95,10 +95,9 @@ class ServerThread implements Runnable {
       ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
 
       while (!socket.isClosed()) {
-        System.out.println(runnableArr.size() + " prova " + runnableArr.toString());
         Log log = ((Log) inStream.readObject());
         logTxt.appendText(log.toString());
-        account = log.getAccount().replaceAll("[-+.]","_");
+        account = log.getUser().replaceAll("[-+.]","_");
 
         switch (log.getOperation()){  //TODO implement password case
           case "login":
@@ -106,11 +105,13 @@ class ServerThread implements Runnable {
             if(folder.listFiles() == null){
               outStream.writeBoolean(false);
               outStream.flush();
+              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login failed",
+              null, null).toString());
               break;
             }
             outStream.writeBoolean(true);
             outStream.flush();
-            logTxt.appendText(new Log(new Date(), "SERVER", log.getAccount() + " login success",
+            logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login success",
                     null, null).toString());
             List<File> emailsListFile = List.of(folder.listFiles());
             outStream.writeObject(emailsListFile);
@@ -121,8 +122,12 @@ class ServerThread implements Runnable {
             try {
               Files.createDirectory(path);
               outStream.writeBoolean(true);
+              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration success",
+                      null, null).toString());
             }catch (FileAlreadyExistsException faee){
               outStream.writeBoolean(false);
+              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration failed",
+                      null, null).toString());
             }finally {
               outStream.flush();
             }
@@ -137,15 +142,29 @@ class ServerThread implements Runnable {
                 outStream.writeObject(false);
                 outStream.flush();
                 check = false;
+                logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " sending failed because some receiver not exist.",
+                        null, null).toString());
                 break;
               }
             }
-            List<Socket> currClients = getCurrClients(runnableArr, receivers);
-            System.out.println(currClients);
             if(sendingEmail != null && check){
-              outStream.writeObject(true);
-              outStream.flush();
+              //save the msg in their directory
               emailToDOM(sendingEmail);
+              //take all opened receiver's sockets and send to them the msg
+              List<Socket> currClients = getCurrClients(runnableArr, receivers);
+              System.out.println(currClients.size() + " prova " + currClients.toString());
+              String theReceiver = receivers.get(0).replaceAll("[-+.]","_");
+              for(Socket s : currClients){
+                NoWriteObjectOutputStream tempOutStream = new NoWriteObjectOutputStream(s.getOutputStream());
+                List<File> sendingEmailList = List.of(new File("src/server/resources/account/" +
+                theReceiver + "/" + sendingEmail.getId() + ".xml"));
+                tempOutStream.writeObject(sendingEmailList);
+                tempOutStream.flush();
+              }
+              for(String rec : receivers){
+                logTxt.appendText(new Log(new Date(), "SERVER", rec + " received an email",
+                null, null).toString());
+              }
             }
             break;
           case "delete":
@@ -173,6 +192,7 @@ class ServerThread implements Runnable {
     List<Socket> res = new ArrayList<>();
     Set<String> recSet = new HashSet<>();
     for (String rec : receivers){
+      rec = rec.replaceAll("[-+.]","_");
       recSet.add(rec);
     }
     for (Runnable r : runnableArr){

@@ -5,33 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/resources/main/images/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/NoReadObjectInputStream.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/NoWriteObjectOutputStream.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/progetto_prog3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/progetto_prog3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/EmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/mails/abcdef.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/email.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/email.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/failure.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/inbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/inbox.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/success.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/alert.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/resources/main/write.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/write.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/resources/main/write.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/write.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/resources/main/server.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/resources/main/server.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +140,8 @@
       <workItem from="1639240815907" duration="30730000" />
       <workItem from="1639319746669" duration="24366000" />
       <workItem from="1639354945604" duration="5828000" />
-      <workItem from="1639434707387" duration="3645000" />
+      <workItem from="1639434707387" duration="10117000" />
+      <workItem from="1639444994427" duration="2701000" />
     </task>
     <servers />
   </component>

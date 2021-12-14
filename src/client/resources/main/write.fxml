@@ -28,6 +28,9 @@
                      </padding>
                   </GridPane>
                </top>
+    <center>
+        <TextArea fx:id="sendTextTxt" prefHeight="411.0" prefWidth="452.0" promptText="Write your message here!" BorderPane.alignment="CENTER" />
+    </center>
     <bottom>
                   <GridPane BorderPane.alignment="CENTER">
                     <columnConstraints>
@@ -43,7 +46,4 @@
                      </children>
                   </GridPane>
                </bottom>
-   <center>
-      <TextArea fx:id="sendTextTxt" prefHeight="411.0" prefWidth="452.0" promptText="Write your message here!" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

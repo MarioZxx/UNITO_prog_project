@@ -3,9 +3,7 @@ package src.client.main;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -57,6 +55,7 @@ public class InboxController {
   private Socket socket;
   private ObjectInputStream inStream;
   private ObjectOutputStream outStream;
+  private List<File> newEmails;
 
   public void initInbox(){
 
@@ -73,7 +72,7 @@ public class InboxController {
           try {
             Object inputObject = inStream.readObject(); //it's blocked here
             if (inputObject.getClass().equals(String.class)) {  //if read a String
-              alert("dis");
+              javaFXThread("dis");
               writeBtn.setVisible(false);
               boolean tryReconnect = true;
               int times = 1;
@@ -86,7 +85,7 @@ public class InboxController {
                     tryReconnect = false;
                     inStream = new ObjectInputStream(socket.getInputStream());
                     outStream = new ObjectOutputStream(socket.getOutputStream());
-                    alert("con");
+                    javaFXThread("con");
                     writeBtn.setVisible(true);
                     System.out.println("riconnesso");
                   }
@@ -98,14 +97,16 @@ public class InboxController {
             } else {  //read a List or Boolean
               if(inputObject.getClass().equals(Boolean.class)) {
                 if(!(Boolean)inputObject)
-                  alert("noSend");
+                  javaFXThread("noSend");
               }else{
-                List<File> newEmails = (List<File>) inputObject;
-                account.saveNewEmails(newEmails);
+                System.out.println("received an email");
+                newEmails = (List<File>) inputObject;
+                javaFXThread("new");
               }
             }
           } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Client is closed normally");
+//            System.out.println("Client exit normally.");
+            e.printStackTrace();
           }
         }
       }).start();
@@ -197,7 +198,7 @@ public class InboxController {
     }
   }
 
-  private void alert(String msg) throws IOException {
+  private void javaFXThread(String msg) throws IOException {
     new Thread(()-> Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -211,6 +212,9 @@ public class InboxController {
               break;
             case "noSend":
               new LoginController().loadAlertStage("Some receivers not exist.");
+              break;
+            case "new":
+              account.saveNewEmails(newEmails);
               break;
           }
         } catch (IOException e) {e.printStackTrace();}

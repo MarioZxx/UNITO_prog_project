@@ -6,17 +6,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import src.model.*;
 
 import javafx.scene.control.Button;
 
-import javax.xml.parsers.*;
 import java.io.IOException;
 import java.net.Socket;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -56,14 +51,21 @@ public class WriteController {
     List<String> receivers = new ArrayList<>(
       Arrays.asList(sendToTxt.getText().replaceAll("[ ]*","").split(";"))
     );
+    for(String rec : receivers){
+      if( !rec.matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
+        new LoginController().loadAlertStage("Destination email syntax wrong!");
+      }
+    }
+    if(sendSubjectTxt.getText().equals(""))
+      new LoginController().loadAlertStage("Subject cannot be empty!");
     NoReadObjectInputStream inStream = new NoReadObjectInputStream(socket.getInputStream());
     NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
     Email sendingEmail = new Email(Long.toString(new Date().getTime()),
+            new Date(),
             account.getEmailAddress(),
             receivers,
             sendSubjectTxt.getText(),
-            sendTextTxt.getText(),
-            new Date());
+            sendTextTxt.getText());
       outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email",
               "send", sendingEmail));
       outStream.flush();

@@ -76,17 +76,19 @@ public class Account{
 
         // get text
         String id = doc.getElementsByTagName("id").item(0).getTextContent();
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String emailDateStr = doc.getElementsByTagName("emailDate").item(0).getTextContent();
+        Date emailDate = df.parse(emailDateStr);
+
         String sender = doc.getElementsByTagName("sender").item(0).getTextContent();
         List<String> receivers = new ArrayList<>();
         for (int j = 0; j < doc.getElementsByTagName("receiver").getLength(); j++) {
           receivers.add(doc.getElementsByTagName("receiver").item(j).getTextContent());
         }
+
         String subject = doc.getElementsByTagName("subject").item(0).getTextContent();
         String text = doc.getElementsByTagName("text").item(0).getTextContent();
-
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String emailDateStr = doc.getElementsByTagName("emailDate").item(0).getTextContent();
-        Date emailDate = df.parse(emailDateStr);
 
 //      System.out.println("Current Element :" + doc.getNodeName());
 //      System.out.println("Id : " + id);
@@ -96,7 +98,7 @@ public class Account{
 //      System.out.println("EmailDate : " + emailDate);
 //      System.out.println("Text : " + text);
 
-        Email email = new Email(id, sender, receivers, subject, text, emailDate);
+        Email email = new Email(id, emailDate, sender, receivers, subject, text);
         inboxContent.add(email);
 
       }
