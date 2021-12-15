@@ -58,7 +58,7 @@ public class Email implements Serializable {
   }
 
   /**
-   * @return      email information short
+   * @return      email information
    */
   @Override
   public String toString() {

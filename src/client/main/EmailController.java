@@ -96,10 +96,12 @@ public class EmailController {
   }
 
   public void onDeleteBtnClick(MouseEvent mouseEvent) throws IOException { //socket
-    NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
-    outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Delete email id: " + email.getId(),
-            "delete", email));
-    account.deleteEmail(email);
-    windowSP.getItems().remove(1);
+    if (!socket.isOutputShutdown()) { //shutdown by thread
+      NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
+      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Delete email id: " + email.getId(),
+      "delete", email));
+      account.deleteEmail(email);
+      windowSP.getItems().remove(1);
+    }
   }
 }

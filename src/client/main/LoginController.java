@@ -14,6 +14,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Date;
+import java.util.List;
+
 import src.model.*;
 
 public class LoginController {
@@ -56,7 +58,7 @@ public class LoginController {
             InboxController inboxController = inboxLoader.getController();
             inboxController.setAccount(accountText.getText());
             inboxController.setSocket(socket);
-            inboxController.setOutStream(outStream);
+//            inboxController.setOutStream(outStream);
             inboxController.initInbox();
 
             Stage logInStage = (Stage) logInBtn.getScene().getWindow();
@@ -75,7 +77,7 @@ public class LoginController {
     if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
       loadAlertStage("Email syntax wrong!");
     }else {
-      //todo check on password;
+      //todo password;
       if (socket == null || socket.isClosed()) {
         socket = new Socket("127.0.0.1", 8189);
         inStream = new ObjectInputStream(socket.getInputStream());
@@ -95,7 +97,7 @@ public class LoginController {
   }
 
   @FXML
-  protected void onAlertButtonClick() throws IOException {
+  protected void onAlertButtonClick() {
     Stage alertStage = (Stage) alertBtn.getScene().getWindow();
     alertStage.close();
   }

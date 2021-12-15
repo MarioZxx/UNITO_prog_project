@@ -51,24 +51,42 @@ public class WriteController {
     List<String> receivers = new ArrayList<>(
       Arrays.asList(sendToTxt.getText().replaceAll("[ ]*","").split(";"))
     );
+    boolean check = true;
     for(String rec : receivers){
       if( !rec.matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
         new LoginController().loadAlertStage("Destination email syntax wrong!");
+        check = false;
       }
     }
-    if(sendSubjectTxt.getText().equals(""))
+    if(sendSubjectTxt.getText().equals("") && check) {
       new LoginController().loadAlertStage("Subject cannot be empty!");
-    NoReadObjectInputStream inStream = new NoReadObjectInputStream(socket.getInputStream());
-    NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
-    Email sendingEmail = new Email(Long.toString(new Date().getTime()),
-            new Date(),
-            account.getEmailAddress(),
-            receivers,
-            sendSubjectTxt.getText(),
-            sendTextTxt.getText());
-      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email",
-              "send", sendingEmail));
+      check = false;
+    }
+
+    if (!socket.isOutputShutdown() && check) { //shutdown by thread when discon.
+      NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
       outStream.flush();
+      Email sendingEmail = new Email(Long.toString(new Date().getTime()),
+              new Date(),
+              account.getEmailAddress(),
+              receivers,
+              sendSubjectTxt.getText(),
+              sendTextTxt.getText());
+
+      String emailAddr = account.getEmailAddress();
+      String addr = "";
+      for(int i = 0; i < emailAddr.length(); i++){
+        addr += emailAddr.charAt(i);
+      }
+//      String test = "a@a.a";
+//      System.out.println("test : " + test + "\naccount.getEmailAddress() : " + account.getEmailAddress());
+//      System.out.println("test.equals(account.getEmailAddress()) : " + test.equals(account.getEmailAddress()));
+//      System.out.println("test.getClass().equals(account.getEmailAddress().getClass()) : " + test.getClass().equals(account.getEmailAddress().getClass()));
+//      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email", "send", sendingEmail));// non si sa perchè non posso usare questa call
+
+      outStream.writeObject(new Log(new Date(), addr, "Sending email", "send", sendingEmail));
+      outStream.flush();
+    }
   }
 
   public void onNoSendBtnClick(MouseEvent mouseEvent) {

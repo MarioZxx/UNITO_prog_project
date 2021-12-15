@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/main/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/EmailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/resources/main/write.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/main/write.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +43,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/server/resource/account/a@a_a" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Download/prog3_21_22-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -141,7 +142,11 @@
       <workItem from="1639319746669" duration="24366000" />
       <workItem from="1639354945604" duration="5828000" />
       <workItem from="1639434707387" duration="10117000" />
-      <workItem from="1639444994427" duration="2701000" />
+      <workItem from="1639444994427" duration="3006000" />
+      <workItem from="1639504637197" duration="8178000" />
+      <workItem from="1639527281503" duration="2940000" />
+      <workItem from="1639530279471" duration="4537000" />
+      <workItem from="1639535002531" duration="1412000" />
     </task>
     <servers />
   </component>

@@ -52,7 +52,7 @@ public class ServerController {
   }
 
   @FXML
-  protected void onDisconnectBtnClick() { //come faccio a far chiudere il socket del thread?
+  protected void onDisconnectBtnClick() {
     try{
       serverSocket.close();
     }catch (IOException e){
@@ -63,7 +63,7 @@ public class ServerController {
   }
 
   public void onExitBtnClick() {
-    if(serverSocket != null) {
+    if(serverSocket != null && !serverSocket.isClosed()) {
       try {
         serverSocket.close();
       } catch (IOException e) {
