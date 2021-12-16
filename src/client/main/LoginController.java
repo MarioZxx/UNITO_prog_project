@@ -14,7 +14,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Date;
-import java.util.List;
 
 import src.model.*;
 
@@ -58,7 +57,6 @@ public class LoginController {
             InboxController inboxController = inboxLoader.getController();
             inboxController.setAccount(accountText.getText());
             inboxController.setSocket(socket);
-//            inboxController.setOutStream(outStream);
             inboxController.initInbox();
 
             Stage logInStage = (Stage) logInBtn.getScene().getWindow();

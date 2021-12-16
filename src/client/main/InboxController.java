@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import src.model.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -99,7 +98,7 @@ public class InboxController {
                 else javaFXThread("new");
             }
           } catch (IOException | ClassNotFoundException e) {  //exit by the exitBtn
-            e.printStackTrace();
+            e.printStackTrace();//todo codice provvisorio
             System.out.println("Client exit itself.");
           }
         }
@@ -108,10 +107,6 @@ public class InboxController {
 
   public void setSocket (Socket socket) {
     this.socket = socket;
-  }
-
-  public void setOutStream (ObjectOutputStream outStream){
-    this.outStream = outStream;
   }
 
   public void setAccount(String mail) {

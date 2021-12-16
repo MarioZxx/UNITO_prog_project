@@ -73,18 +73,25 @@ public class WriteController {
               sendSubjectTxt.getText(),
               sendTextTxt.getText());
 
-      String emailAddr = account.getEmailAddress();
-      String addr = "";
-      for(int i = 0; i < emailAddr.length(); i++){
-        addr += emailAddr.charAt(i);
-      }
-//      String test = "a@a.a";
-//      System.out.println("test : " + test + "\naccount.getEmailAddress() : " + account.getEmailAddress());
-//      System.out.println("test.equals(account.getEmailAddress()) : " + test.equals(account.getEmailAddress()));
-//      System.out.println("test.getClass().equals(account.getEmailAddress().getClass()) : " + test.getClass().equals(account.getEmailAddress().getClass()));
-//      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email", "send", sendingEmail));// non si sa perchè non posso usare questa call
+//      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email", "send", sendingEmail));  //exception
 
-      outStream.writeObject(new Log(new Date(), addr, "Sending email", "send", sendingEmail));
+      String str = new String(account.getEmailAddress());
+      outStream.writeObject(new Log(new Date(), str, "Sending email", "send", sendingEmail));  //exception
+
+//      String test = "a@a.a";
+//      System.out.println("test : " + test + "account.getEmailAddress() : " + account.getEmailAddress());  //guardando a video sono uguali
+//      System.out.println(test.equals(account.getEmailAddress()));  //true
+//      System.out.println(test.getClass().equals(account.getEmailAddress().getClass()));  //true
+//      outStream.writeObject(new Log(new Date(), test, "Sending email", "send", sendingEmail));  //no exception
+
+      //metodo funzionante
+//      String emailAddr = account.getEmailAddress();
+//      String addr = "";
+//      for(int i = 0; i < emailAddr.length(); i++){
+//        addr += emailAddr.charAt(i);
+//      }
+//      outStream.writeObject(new Log(new Date(), addr, "Sending email", "send", sendingEmail));
+
       outStream.flush();
     }
   }

@@ -158,26 +158,23 @@ class ServerThread implements Runnable {
     if(sendingEmail != null && check){
       //save the msg in their directory
       new XMLReadWriter().emailToFile(sendingEmail);
-      //get all opened receiver's sockets and send to them the msg
-      List<Socket> currClients = getCurrClients(runnableArr, receivers);
-
-      String theReceiver = receivers.get(0).replaceAll("[-+.]","_");//TODO non usare sempre lo stesso ricevitore
-      for(Socket s : currClients){
+      //get all opened client sockets
+      HashMap<String, Socket> currClients = getCurrClients(runnableArr, receivers);
+      //send the email to clients
+      for(Socket s : currClients.values()){
         NoWriteObjectOutputStream tempOutStream = new NoWriteObjectOutputStream(s.getOutputStream());
-        List<File> sendingEmailList = List.of(new File("src/server/resources/account/" +
-                theReceiver + "/" + sendingEmail.getId() + ".xml"));
-        tempOutStream.writeObject(new XMLReadWriter().filesToEmails(sendingEmailList));
+        tempOutStream.writeObject(List.of(sendingEmail));
         tempOutStream.flush();
       }
-      for(String rec : receivers){
+      for(String rec : currClients.keySet()){
         logTxt.appendText(new Log(new Date(), "SERVER", rec + " received an email",
         null, null).toString());
       }
     }
   }
 
-  private List<Socket> getCurrClients(List<Runnable> runnableArr, List<String> receivers) {
-    List<Socket> res = new ArrayList<>();
+  private HashMap<String, Socket> getCurrClients(List<Runnable> runnableArr, List<String> receivers) {
+    HashMap<String, Socket> res = new HashMap<>();
     Set<String> recSet = new HashSet<>();
     for (String rec : receivers){
       rec = rec.replaceAll("[-+.]","_");
@@ -186,7 +183,7 @@ class ServerThread implements Runnable {
     for (Runnable r : runnableArr){
       String tempAcc = ((ServerThread)r).getAccount();
       if(recSet.contains(tempAcc)){
-        res.add(((ServerThread)r).getSocket());
+        res.put(tempAcc, ((ServerThread)r).getSocket());
       }
     }
     return res;

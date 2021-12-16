@@ -1,5 +1,6 @@
 package src.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Date;
 
 public class Email implements Serializable {
 
+  @Serial
+  private static final long serialVersionUID = -6148445532895274571L;
   private String id;
   private Date emailDate;
   private String sender;

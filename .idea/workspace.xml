@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/main/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/EmailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +49,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -146,7 +144,9 @@
       <workItem from="1639504637197" duration="8178000" />
       <workItem from="1639527281503" duration="2940000" />
       <workItem from="1639530279471" duration="4537000" />
-      <workItem from="1639535002531" duration="1412000" />
+      <workItem from="1639535002531" duration="4293000" />
+      <workItem from="1639539704830" duration="367000" />
+      <workItem from="1639696522003" duration="2281000" />
     </task>
     <servers />
   </component>
