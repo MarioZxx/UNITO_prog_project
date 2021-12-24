@@ -54,8 +54,8 @@ public class InboxController {
 
       new Thread(()->{
         boolean start = true;
-        for(int prova = 0; prova < 10 && !socket.isClosed(); prova++ ){ //test version
-//        while (!socket.isClosed()) {  //todo finally version
+//        for(int prova = 0; prova < 10 && !socket.isClosed(); prova++ ){ //test version
+        while (!socket.isClosed()) {  //finally version
           try {
             Object inputObject = inStream.readObject(); //it's blocked here
 
@@ -87,6 +87,7 @@ public class InboxController {
                   }
                 }
                 case "noSend" -> javaFXThread("noSend");
+                case "yesSend" -> javaFXThread("yesSend");
               }
 
             } else {  //read a List
@@ -98,7 +99,6 @@ public class InboxController {
                 else javaFXThread("new");
             }
           } catch (IOException | ClassNotFoundException e) {  //exit by the exitBtn
-            e.printStackTrace();//todo codice provvisorio
             System.out.println("Client exit itself.");
           }
         }
@@ -202,6 +202,7 @@ public class InboxController {
             writeBtn.setVisible(true);
           }
           case "noSend" -> new LoginController().loadAlertStage("Some receivers not exist.");
+          case "yesSend" -> new LoginController().loadAlertStage("Email is sent");
           case "new" -> {
             new LoginController().loadAlertStage("Received a new email.");
             account.saveNewEmails(newEmails);

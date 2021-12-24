@@ -80,55 +80,46 @@ class ServerThread implements Runnable {
       ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
 
       while (!socket.isClosed()) {
-        Object obj = inStream.readObject();
-        Log log = ((Log) obj);
+        Log log = (Log) inStream.readObject();
         logTxt.appendText(log.toString());
         account = log.getUser().replaceAll("[-+.]","_");
 
         switch (log.getOperation()) {
-          case "login" -> {
-            File folder = new File("src/server/resources/account/" + account);
-            if (folder.listFiles() == null) {
-              outStream.writeBoolean(false);
-              outStream.flush();
-              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login failed",
-              null, null).toString());
-              break;
-            }
-            outStream.writeBoolean(true);
-            outStream.flush();
-            logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login success",
-            null, null).toString());
-            List<File> emailsListFile = List.of(folder.listFiles());
-            outStream.writeObject(new XMLReadWriter().filesToEmails(emailsListFile));
-            outStream.flush();
-          }
+          case "login" -> loginHandler(outStream, inStream, log);
+
           case "regis" -> {
             Path path = Paths.get("src/server/resources/account/" + account);
             try {
               Files.createDirectory(path);
               outStream.writeBoolean(true);
+              outStream.flush();
+              String passMD5 = (String) inStream.readObject();
+              FileWriter fw = new FileWriter( path + "/" + account +  ".pass",false);
+              fw.write(passMD5);
+              fw.close();
               logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration success",
               null, null).toString());
             } catch (FileAlreadyExistsException faee) {
               outStream.writeBoolean(false);
+              outStream.flush();
               logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration failed",
               null, null).toString());
-            } finally {
-              outStream.flush();
             }
           }
+
           case "send" -> sendHandler(outStream, log);
+
           case "delete" -> {
             String deleteEmailId = log.getEmail().getId();
             File deleteFile = new File("src/server/resources/account/" + account + "/" +
             deleteEmailId + ".xml");
             deleteFile.delete();
           }
+
           case "exit" -> socket.close();
         }
 
-      }
+      }//end loop on readObject
 
     } catch (IOException | ClassNotFoundException e) {  //readObject.exp on ServerSocket.close
       try {
@@ -136,6 +127,41 @@ class ServerThread implements Runnable {
       } catch (IOException err) {err.printStackTrace();}
     }
 
+  }
+
+  private void loginHandler(ObjectOutputStream outStream, ObjectInputStream inStream, Log log) throws IOException, ClassNotFoundException {
+    File folder = new File("src/server/resources/account/" + account);
+    //check if the account exists
+    if (folder.listFiles() == null) {
+      outStream.writeBoolean(false);
+      outStream.flush();
+      logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " not exists",
+      null, null).toString());
+      return;
+    }
+
+    //check if the password is correct
+    String inputPass = (String) inStream.readObject();
+    FileReader passFileReader = new FileReader(new File("src/server/resources/account/" + account
+            + "/" + account + ".pass"));
+    char[] pass = new char[32];
+    passFileReader.read(pass);
+    if(!String.valueOf(pass).equals(inputPass)){
+      outStream.writeBoolean(false);
+      outStream.flush();
+      logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " password wrong",
+      null, null).toString());
+      return;
+    }
+
+    //account and password are correct, so update the emailsList
+    outStream.writeBoolean(true);
+    outStream.flush();
+    logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login success",
+    null, null).toString());
+    List<File> emailsListFile = List.of(folder.listFiles());
+    outStream.writeObject(new XMLReadWriter().filesToEmails(emailsListFile));
+    outStream.flush();
   }
 
   private void sendHandler(ObjectOutputStream outStream, Log log) throws IOException {
@@ -170,7 +196,10 @@ class ServerThread implements Runnable {
         logTxt.appendText(new Log(new Date(), "SERVER", rec + " received an email",
         null, null).toString());
       }
+      outStream.writeObject("yesSend");
+      outStream.flush();
     }
+
   }
 
   private HashMap<String, Socket> getCurrClients(List<Runnable> runnableArr, List<String> receivers) {

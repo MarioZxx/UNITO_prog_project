@@ -33,6 +33,7 @@ public class XMLReadWriter {
       DocumentBuilder db = dbf.newDocumentBuilder();
 
       for (File file : emailsFiles) {
+        if(!file.getPath().endsWith(".xml")) continue;
         Document doc = db.parse(file);
 
         // get text

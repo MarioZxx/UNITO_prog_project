@@ -12,7 +12,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
 import java.net.Socket;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import src.model.*;
@@ -32,7 +35,7 @@ public class LoginController {
   private ObjectOutputStream outStream;
 
   @FXML
-  protected void onLogInButtonClick() throws IOException {
+  protected void onLogInButtonClick() throws IOException, NoSuchAlgorithmException{
     if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
       loadAlertStage("Email syntax wrong!");
     }else{
@@ -45,6 +48,8 @@ public class LoginController {
         }
         try {
           outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to login", "login", null));
+          outStream.flush();
+          outStream.writeObject(md5(passwordText.getText()));
           outStream.flush();
 
           if(inStream.readBoolean()) {
@@ -71,10 +76,10 @@ public class LoginController {
   }
 
   @FXML
-  protected void onRegisterLabelClick() throws IOException {
+  protected void onRegisterLabelClick() throws IOException, NoSuchAlgorithmException {
     if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
       loadAlertStage("Email syntax wrong!");
-    }else {
+    } else {
       //todo password;
       if (socket == null || socket.isClosed()) {
         socket = new Socket("127.0.0.1", 8189);
@@ -85,12 +90,14 @@ public class LoginController {
       outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to registration",
       "regis", null));
       outStream.flush();
-      if (inStream.readBoolean())
+      if (inStream.readBoolean()) {
+        outStream.writeObject(md5(passwordText.getText()));
+        outStream.flush();
         loadAlertStage("Registration successful!");
-      else {
+      } else {
         loadAlertStage("Account already exists!");
-        socket.close();
       }
+      socket.close();
     }
   }
 
@@ -111,6 +118,13 @@ public class LoginController {
 
   public void setAlertLbl(String msg) {
     alertLbl.setText(msg);
+  }
+
+  private String md5(String input) throws NoSuchAlgorithmException {
+      MessageDigest m = MessageDigest.getInstance("MD5");
+      m.update(input.getBytes());
+      byte[] digest = m.digest();
+      return String.format("%032x", new BigInteger(1, digest));
   }
 
 

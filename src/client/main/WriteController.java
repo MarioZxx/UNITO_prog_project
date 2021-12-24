@@ -73,25 +73,7 @@ public class WriteController {
               sendSubjectTxt.getText(),
               sendTextTxt.getText());
 
-//      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email", "send", sendingEmail));  //exception
-
-      String str = new String(account.getEmailAddress());
-      outStream.writeObject(new Log(new Date(), str, "Sending email", "send", sendingEmail));  //exception
-
-//      String test = "a@a.a";
-//      System.out.println("test : " + test + "account.getEmailAddress() : " + account.getEmailAddress());  //guardando a video sono uguali
-//      System.out.println(test.equals(account.getEmailAddress()));  //true
-//      System.out.println(test.getClass().equals(account.getEmailAddress().getClass()));  //true
-//      outStream.writeObject(new Log(new Date(), test, "Sending email", "send", sendingEmail));  //no exception
-
-      //metodo funzionante
-//      String emailAddr = account.getEmailAddress();
-//      String addr = "";
-//      for(int i = 0; i < emailAddr.length(); i++){
-//        addr += emailAddr.charAt(i);
-//      }
-//      outStream.writeObject(new Log(new Date(), addr, "Sending email", "send", sendingEmail));
-
+      outStream.writeObject(new Log(new Date(), account.getEmailAddress(), "Sending email", "send", sendingEmail));
       outStream.flush();
     }
   }

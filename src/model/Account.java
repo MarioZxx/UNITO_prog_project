@@ -10,9 +10,9 @@ import java.util.List;
 
 public class Account {
 
+  private final String emailAddress;
   private final ListProperty<Email> inbox;
   private final ObservableList<Email> inboxContent;
-  private final String emailAddress;
 
   /**
    * Constructor of the class.
@@ -22,10 +22,10 @@ public class Account {
    */
 
   public Account(String emailAddress) {
+    this.emailAddress = emailAddress;
     this.inboxContent = FXCollections.observableList(new LinkedList<>());
     this.inbox = new SimpleListProperty<>();
     this.inbox.set(inboxContent);
-    this.emailAddress = emailAddress;
   }
 
   /**
@@ -39,7 +39,7 @@ public class Account {
    * @return      email address of this account
    */
   public String getEmailAddress() {
-    return emailAddress;
+    return new String(emailAddress);
   }
 
   /**

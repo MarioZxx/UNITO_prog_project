@@ -9,9 +9,9 @@
       <change beforePath="$PROJECT_DIR$/src/client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +58,7 @@
       <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resource\account\studente@a.a" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resources\account\d@d_d" />
       <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\server\resources\account\a@a_a" />
       <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\client\resources\main" />
       <recent name="D:\UNITO_Informatica\prog3\progetto_prog3\src\resources\mails\main" />
@@ -146,7 +147,12 @@
       <workItem from="1639530279471" duration="4537000" />
       <workItem from="1639535002531" duration="4293000" />
       <workItem from="1639539704830" duration="367000" />
-      <workItem from="1639696522003" duration="2281000" />
+      <workItem from="1639696522003" duration="2396000" />
+      <workItem from="1639846738920" duration="227000" />
+      <workItem from="1639951968694" duration="544000" />
+      <workItem from="1639991967486" duration="1971000" />
+      <workItem from="1640096937469" duration="600000" />
+      <workItem from="1640342711575" duration="6624000" />
     </task>
     <servers />
   </component>
