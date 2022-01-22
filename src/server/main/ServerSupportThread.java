@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+// a support thread who will call other thread to connect with client
 public class ServerSupportThread implements Runnable{
   private ServerSocket serverSocket;
   private TextArea logTxt;

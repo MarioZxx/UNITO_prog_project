@@ -77,7 +77,7 @@ public class ServerController {
 
   public void onExportBtnClick() throws IOException {
     DateFormat df = new SimpleDateFormat("dd_MM_yyyy");
-    FileWriter fw = new FileWriter(df.format(new Date()) + ".log",true);
+    FileWriter fw = new FileWriter("src/server/resources/" + df.format(new Date()) + ".log",true);
     fw.write(logTxt.getText());
     if (fw!=null) fw.close();
   }

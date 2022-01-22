@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigInteger;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -40,64 +41,65 @@ public class LoginController {
       loadAlertStage("Email syntax wrong!");
     }else{
 
-        if(socket == null || socket.isClosed()) {
-          socket = new Socket("127.0.0.1", 8189);
-          inStream = new ObjectInputStream(socket.getInputStream());
-          outStream = new ObjectOutputStream(socket.getOutputStream());
-          outStream.flush();
+      try {
+        initSocket();
+        outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to login", "login", null));
+        outStream.flush();
+        outStream.writeObject(md5(passwordText.getText()));
+        outStream.flush();
+
+        if(inStream.readBoolean()) {
+          Stage mailStage = new Stage();
+          FXMLLoader inboxLoader = new FXMLLoader(getClass().getResource("../resources/main/inbox.fxml"));
+          mailStage.setTitle("Mail Box");
+          mailStage.setScene(new Scene(inboxLoader.load()));
+          mailStage.show();
+
+          InboxController inboxController = inboxLoader.getController();
+          inboxController.setAccount(accountText.getText());
+          inboxController.setSocket(socket);
+          inboxController.initInbox();
+
+          Stage logInStage = (Stage) logInBtn.getScene().getWindow();
+          logInStage.close();
+        }else{
+          loadAlertStage("Account or password wrong");
+          socket.close();
         }
-        try {
-          outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to login", "login", null));
-          outStream.flush();
-          outStream.writeObject(md5(passwordText.getText()));
-          outStream.flush();
 
-          if(inStream.readBoolean()) {
-            Stage mailStage = new Stage();
-            FXMLLoader inboxLoader = new FXMLLoader(getClass().getResource("../resources/main/inbox.fxml"));
-            mailStage.setTitle("Mail Box");
-            mailStage.setScene(new Scene(inboxLoader.load()));
-            mailStage.show();
-
-            InboxController inboxController = inboxLoader.getController();
-            inboxController.setAccount(accountText.getText());
-            inboxController.setSocket(socket);
-            inboxController.initInbox();
-
-            Stage logInStage = (Stage) logInBtn.getScene().getWindow();
-            logInStage.close();
-          }else{
-            loadAlertStage("Account or password wrong");
-            socket.close();
-          }
-
-        }catch (IOException e){e.printStackTrace();}
+      }catch(ConnectException e){loadAlertStage("The server is disconnected");}
     }
   }
+
 
   @FXML
   protected void onRegisterLabelClick() throws IOException, NoSuchAlgorithmException {
     if( !accountText.getText().matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
       loadAlertStage("Email syntax wrong!");
     } else {
-      //todo password;
-      if (socket == null || socket.isClosed()) {
+      try {
+        initSocket();
+        outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to registration",
+        "regis", null));
+        outStream.flush();
+        if (inStream.readBoolean()) {
+          outStream.writeObject(md5(passwordText.getText()));
+          outStream.flush();
+          loadAlertStage("Registration successful!");
+        } else {
+          loadAlertStage("Account already exists!");
+        }
+        socket.close();
+      }catch(ConnectException e){loadAlertStage("The server is disconnected");}
+    }
+  }
+
+  private void initSocket() throws IOException {
+    if(socket == null || socket.isClosed()) {
         socket = new Socket("127.0.0.1", 8189);
         inStream = new ObjectInputStream(socket.getInputStream());
         outStream = new ObjectOutputStream(socket.getOutputStream());
         outStream.flush();
-      }
-      outStream.writeObject(new Log(new Date(), accountText.getText(), "Try to registration",
-      "regis", null));
-      outStream.flush();
-      if (inStream.readBoolean()) {
-        outStream.writeObject(md5(passwordText.getText()));
-        outStream.flush();
-        loadAlertStage("Registration successful!");
-      } else {
-        loadAlertStage("Account already exists!");
-      }
-      socket.close();
     }
   }
 

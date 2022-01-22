@@ -51,19 +51,18 @@ public class WriteController {
     List<String> receivers = new ArrayList<>(
       Arrays.asList(sendToTxt.getText().replaceAll("[ ]*","").split(";"))
     );
-    boolean check = true;
     for(String rec : receivers){
       if( !rec.matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") ){
         new LoginController().loadAlertStage("Destination email syntax wrong!");
-        check = false;
+        return;
       }
     }
-    if(sendSubjectTxt.getText().equals("") && check) {
+    if(sendSubjectTxt.getText().equals("")) {
       new LoginController().loadAlertStage("Subject cannot be empty!");
-      check = false;
+      return;
     }
 
-    if (!socket.isOutputShutdown() && check) { //shutdown by thread when discon.
+    if (!socket.isOutputShutdown()) { //shutdown by thread when disconnected
       NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(socket.getOutputStream());
       outStream.flush();
       Email sendingEmail = new Email(Long.toString(new Date().getTime()),
