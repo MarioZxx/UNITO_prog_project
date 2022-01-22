@@ -8,7 +8,6 @@ import java.io.OutputStream;
  * A new ObjectOutputStream class that doesn't write the header in the stream when open it
  * */
 public class NoWriteObjectOutputStream extends ObjectOutputStream {
-  private boolean write;
 
   public NoWriteObjectOutputStream(OutputStream outStream) throws IOException {
     super(outStream);

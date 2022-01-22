@@ -1,6 +1,8 @@
 package src.server.main;
 
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import src.model.*;
 
 import java.io.*;
@@ -40,7 +42,7 @@ public class ServerSupportThread implements Runnable{
         for(Socket closeSocket : socketArr) {
           if (!closeSocket.isClosed()) {
             NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(closeSocket.getOutputStream());
-            outStream.writeObject("disconnected");
+            outStream.writeObject(new String("disconnected"));
             outStream.flush();
             closeSocket.close();
           }
@@ -81,7 +83,8 @@ class ServerThread implements Runnable {
 
       while (!socket.isClosed()) {
         Log log = (Log) inStream.readObject();
-        logTxt.appendText(log.toString());
+//        logTxt.appendText(log.toString());
+        appendToTxtArea(log);
         account = log.getUser().replaceAll("[-+.]","_");
 
         switch (log.getOperation()) {
@@ -97,13 +100,13 @@ class ServerThread implements Runnable {
               FileWriter fw = new FileWriter( path + "/" + account +  ".pass",false);
               fw.write(passMD5);
               fw.close();
-              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration success",
-              null, null).toString());
+              appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " registration success",
+              null, null));
             } catch (FileAlreadyExistsException faee) {
               outStream.writeBoolean(false);
               outStream.flush();
-              logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " registration failed",
-              null, null).toString());
+              appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " registration failed",
+              null, null));
             }
           }
 
@@ -135,8 +138,8 @@ class ServerThread implements Runnable {
     if (folder.listFiles() == null) {
       outStream.writeBoolean(false);
       outStream.flush();
-      logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " not exists",
-      null, null).toString());
+      appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " not exists",
+      null, null));
       return;
     }
 
@@ -149,16 +152,16 @@ class ServerThread implements Runnable {
     if(!String.valueOf(pass).equals(inputPass)){
       outStream.writeBoolean(false);
       outStream.flush();
-      logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " password wrong",
-      null, null).toString());
+      appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " password wrong",
+      null, null));
       return;
     }
 
     //account and password are correct, so update the emailsList
     outStream.writeBoolean(true);
     outStream.flush();
-    logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " login success",
-    null, null).toString());
+    appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " login success",
+    null, null));
     List<File> emailsListFile = List.of(folder.listFiles());
     outStream.writeObject(new XMLReadWriter().filesToEmails(emailsListFile));
     outStream.flush();
@@ -172,11 +175,11 @@ class ServerThread implements Runnable {
     for(String rec : receivers){
       File folderCheck = new File("src/server/resources/account/" + rec.replaceAll("[-+.]","_"));
       if(!folderCheck.exists() && !folderCheck.isDirectory()){
-        outStream.writeObject("noSend");
+        outStream.writeObject(new String("noSend"));
         outStream.flush();
         check = false;
-        logTxt.appendText(new Log(new Date(), "SERVER", log.getUser() + " sending failed because some receiver not exist.",
-                null, null).toString());
+        appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " sending failed because some receiver not exist.",
+                null, null));
         break;
       }
     }
@@ -193,10 +196,10 @@ class ServerThread implements Runnable {
         tempOutStream.flush();
       }
       for(String rec : currClients.keySet()){
-        logTxt.appendText(new Log(new Date(), "SERVER", rec + " received an email",
-        null, null).toString());
+        appendToTxtArea(new Log(new Date(), "SERVER", rec + " received an email",
+        null, null));
       }
-      outStream.writeObject("yesSend");
+      outStream.writeObject(new String("yesSend"));
       outStream.flush();
     }
 
@@ -216,6 +219,12 @@ class ServerThread implements Runnable {
       }
     }
     return res;
+  }
+
+  private void appendToTxtArea(Log log) {
+    new Thread(()-> Platform.runLater(() -> {
+      logTxt.appendText(log.toString());
+    })).start();
   }
 
 }

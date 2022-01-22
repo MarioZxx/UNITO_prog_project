@@ -7,11 +7,8 @@
     <list default="true" id="32ba987b-cbb7-458a-8690-275f99b3b298" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/main/InboxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/InboxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/main/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/main/WriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/main/WriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/NoWriteObjectOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/NoWriteObjectOutputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/ServerSupportThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main/XMLReadWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Download/prog3_21_22-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../IUM/unito-ium-master/server" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -84,19 +81,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FolderTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="src.server.main.FolderTest" />
-      <module name="progetto_prog3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.server.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.server.main.ServerMain" />
       <module name="progetto_prog3" />
@@ -114,13 +98,11 @@
     <list>
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ServerMain" />
-      <item itemvalue="Application.FolderTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
-        <item itemvalue="Application.FolderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +134,11 @@
       <workItem from="1639951968694" duration="544000" />
       <workItem from="1639991967486" duration="1971000" />
       <workItem from="1640096937469" duration="600000" />
-      <workItem from="1640342711575" duration="6624000" />
+      <workItem from="1640342711575" duration="6906000" />
+      <workItem from="1640515056690" duration="42000" />
+      <workItem from="1641500263502" duration="112000" />
+      <workItem from="1642069285624" duration="48000" />
+      <workItem from="1642806863895" duration="12181000" />
     </task>
     <servers />
   </component>
@@ -188,6 +174,14 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.IllegalStateException" package="java.lang" />
           <option name="timeStamp" value="13" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.StreamCorruptedException" package="java.io" />
+          <option name="timeStamp" value="14" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="15" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
