@@ -67,7 +67,7 @@ public class InboxController {
             try {
               Object inputObject = inStream.readObject(); //it's blocked here
 //              System.out.println("inputObject.getClass: " + inputObject.getClass());
-              if (inputObject.getClass().equals(String.class)) {  //if read a String
+              if (inputObject instanceof String) {  //if read a String
                 switch ((String) inputObject) {
                   case "disconnected" -> {
                     javaFXThread("dis");
@@ -101,11 +101,13 @@ public class InboxController {
                 }
 
               } else {  //read a List
-                newEmails = (List<Email>) inputObject;
-                if (start) {
-                  account.saveNewEmails(newEmails); //it's possible because javaFX isn't totally loaded
-                  start = false;
-                } else javaFXThread("new");
+                if (inputObject instanceof List) {
+                  newEmails = (List<Email>) inputObject;
+                  if (start) {
+                    account.saveNewEmails(newEmails); //it's possible because javaFX isn't totally loaded
+                    start = false;
+                  } else javaFXThread("new");
+                }
               }
             } catch (SocketException e) {  //exit by the exitBtn
               System.out.println("Client exit itself.");
@@ -173,7 +175,7 @@ public class InboxController {
   }
 
   /**
-   * Mostra la mail selezionata nella vista
+   * Show the email selected in the ListView
    */
   protected void showSelectedEmail(MouseEvent mouseEvent) {
     Email email = emailListView.getSelectionModel().getSelectedItem();

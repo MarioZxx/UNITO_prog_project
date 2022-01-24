@@ -29,17 +29,17 @@ public class Account {
   }
 
   /**
-   * @return      list of email
-   */
-  public ListProperty<Email> inboxProperty() {
-    return inbox;
-  }
-
-  /**
    * @return      email address of this account
    */
   public String getEmailAddress() {
     return new String(emailAddress);
+  }
+
+  /**
+   * @return      list of email
+   */
+  public ListProperty<Email> inboxProperty() {
+    return inbox;
   }
 
   /**

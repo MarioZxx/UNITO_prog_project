@@ -114,9 +114,11 @@ public class XMLReadWriter {
       // send DOM to file
       for(String rec : email.getReceivers()){
         rec = rec.replaceAll("[-+.]","_");
-        tr.transform(new DOMSource(dom),
-        new StreamResult(new FileOutputStream("src/server/resources/account/" + rec + "/" +
-        email.getId() + ".xml")));
+        FileOutputStream fos = new FileOutputStream("src/server/resources/account/" + rec + "/" +
+        email.getId() + ".xml");
+        StreamResult sr = new StreamResult(fos);
+        tr.transform(new DOMSource(dom), sr);
+        sr.getOutputStream().close();
       }
 
     } catch (ParserConfigurationException | IOException | TransformerException e) {

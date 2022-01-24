@@ -41,7 +41,7 @@ public class ServerSupportThread implements Runnable{
     }catch (IOException e){ //ServerSocket is closed
       try {
         for(Socket closeSocket : socketArr) {
-          if (!closeSocket.isClosed()) {
+          if (!closeSocket.isClosed() && closeSocket.isConnected()) {
             NoWriteObjectOutputStream outStream = new NoWriteObjectOutputStream(closeSocket.getOutputStream());
             outStream.writeObject(new String("disconnected"));
             outStream.flush();
@@ -116,8 +116,9 @@ class ServerThread implements Runnable {
           case "delete" -> {
             String deleteEmailId = log.getEmail().getId();
             File deleteFile = new File("src/server/resources/account/" + account + "/" +
-            deleteEmailId + ".xml");
-            deleteFile.delete();
+              deleteEmailId + ".xml");
+            if(!deleteFile.delete())
+              System.out.println( deleteFile.exists() + " src/server/resources/account/" + account + "/" + deleteEmailId + ".xml");
           }
 
           case "exit" -> socket.close();
@@ -141,6 +142,7 @@ class ServerThread implements Runnable {
       outStream.flush();
       appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " not exists",
       null, null));
+      inStream.readObject(); //garbage
       return;
     }
 
@@ -171,34 +173,29 @@ class ServerThread implements Runnable {
   private void sendHandler(ObjectOutputStream outStream, Log log) throws IOException {
     Email sendingEmail = log.getEmail();
     List<String> receivers = sendingEmail.getReceivers();
-    boolean check = true;
     //check if all receivers exist
     for(String rec : receivers){
       File folderCheck = new File("src/server/resources/account/" + rec.replaceAll("[-+.]","_"));
       if(!folderCheck.exists() && !folderCheck.isDirectory()){
         outStream.writeObject(new String("noSend"));
         outStream.flush();
-        check = false;
         appendToTxtArea(new Log(new Date(), "SERVER", log.getUser() + " sending failed because some receiver not exist.",
                 null, null));
-        break;
+        return;
       }
     }
 
-    if(sendingEmail != null && check){
+    if(sendingEmail != null){
       //save the msg in their directory
       new XMLReadWriter().emailToFile(sendingEmail);
       //get all opened client sockets
       HashMap<String, Socket> currClients = getCurrClients(runnableArr, receivers);
       //send the email to clients
-      for(Socket s : currClients.values()){
-        NoWriteObjectOutputStream tempOutStream = new NoWriteObjectOutputStream(s.getOutputStream());
+      for(Map.Entry<String, Socket> e : currClients.entrySet()){
+        NoWriteObjectOutputStream tempOutStream = new NoWriteObjectOutputStream(e.getValue().getOutputStream());
         tempOutStream.writeObject(List.of(sendingEmail));
         tempOutStream.flush();
-      }
-      for(String rec : currClients.keySet()){
-        appendToTxtArea(new Log(new Date(), "SERVER", rec + " received an email",
-        null, null));
+        appendToTxtArea(new Log(new Date(), "SERVER", e.getKey() + " received an email",null, null));
       }
       outStream.writeObject(new String("yesSend"));
       outStream.flush();
